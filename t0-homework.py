@@ -10,18 +10,19 @@ df1 = pd.read_csv('data/ctd-bottles-variants/01-ctd-bottles-2-1.csv',
 
 df2 = pd.read_csv('data/ctd-bottles-variants/02-ctd-bottles-2-1.csv',
                   na_values=-999,
+                  skiprows=[1],
                   encoding ='cp1252')
 
 df3 = pd.read_csv('data/ctd-bottles-variants/03-ctd-bottles-2-1.csv',
                   na_values=-999,
-                  skiprows=3,
+                  skiprows=[0, 1, 2, 4],
                   sep = ',',
                   encoding ='cp1252')
 
 df4 = pd.read_table('data/ctd-bottles-variants/04-ctd-bottles-2-1.txt',
                   na_values=-999,
                   sep='\t',
-                  skiprows=3)
+                  skiprows=[0, 1, 2, 4])
 
 df5 = pd.read_excel('data/ctd-bottles-variants/05-ctd-bottles-2-1.xlsx',
                   na_values=-999,
