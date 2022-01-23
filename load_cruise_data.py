@@ -35,13 +35,13 @@ stations.set_index("station_cast", inplace=True)
 ctd = []
 for i, row in stations.iterrows():
     print(i)
-    
+
     # Determine filename from row of stations table (station & cast)
     # filename = "data/ctd-bottles/ctd-bottles-1-1.csv"
     # filename = "data/ctd-bottles/ctd-bottles-" + "1" + "-" + "1" + ".csv"
     # filename = "data/ctd-bottles/ctd-bottles-" + str(row.station) + "-" + str(row.cast) + ".csv"
     filename = "data/ctd-bottles/ctd-bottles-{}-{}.csv".format(row.station, row.cast)
-    
+
     # Import CTD data for this station and append to list
     _ctd = pd.read_csv(filename, na_values=-999)
     _ctd["station_cast"] = i
@@ -55,5 +55,5 @@ for var in ["lat", "lon", "station", "cast"]:
     ctd[var] = stations.loc[ctd.station_cast, var].values
 
 # Get datetime
-ctd["datetime"] = pd.to_datetime(ctd[['year', 'month', 'day', 'hour', 'minute']])
+ctd["datetime"] = pd.to_datetime(ctd[["year", "month", "day", "hour", "minute"]])
 # Next: use groupby() to condense ^ into stations table
